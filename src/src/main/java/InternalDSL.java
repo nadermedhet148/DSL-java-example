@@ -12,7 +12,7 @@ class InternalDSL {
         calculator
                 .addField(new FieldBuilder("salary").build())
                 .addField(new FieldBuilder("bounce").build())
-                .addEquation(new Equation("totalSalary" , "salary" , "bounce" , new Adder() )).
+                .addEquation(new Equation("totalSalary" , "salary" , "bounce" , "add" )).
                 run();
     }
 }

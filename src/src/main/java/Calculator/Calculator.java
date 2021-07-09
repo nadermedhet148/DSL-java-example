@@ -1,6 +1,8 @@
 package Calculator;
 
 import Calculator.Equation.Equation;
+import Calculator.Equation.Operator.IOperator;
+import Calculator.Equation.Operator.OperatorFactory;
 import Calculator.Field.Field;
 
 import java.util.HashMap;
@@ -28,14 +30,16 @@ public class Calculator {
     public void run(){
         equationsMap.keySet().forEach(equationName ->{
             Equation eq = equationsMap.get(equationName);
-            Integer result =  eq.getOperator().Operate(fieldsMap.get(eq.getLeft()).getValue() , fieldsMap.get(eq.getRight()).getValue());
+            IOperator operator = OperatorFactory.getOperator(eq.getOperator());
+            Integer result =  operator.Operate(fieldsMap.get(eq.getLeft()).getValue() , fieldsMap.get(eq.getRight()).getValue());
             System.out.println("result for " + eq.getName() + " equal : " + result );
         });
     }
 
     public  Integer calcEquation(String equationName){
         Equation eq = equationsMap.get(equationName);
-        return eq.getOperator().Operate(fieldsMap.get(eq.getLeft()).getValue() , fieldsMap.get(eq.getRight()).getValue());
+        IOperator operator = OperatorFactory.getOperator(eq.getOperator());
+        return operator.Operate(fieldsMap.get(eq.getLeft()).getValue() , fieldsMap.get(eq.getRight()).getValue());
     }
 
 }

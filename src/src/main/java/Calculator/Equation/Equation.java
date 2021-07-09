@@ -10,5 +10,5 @@ public class Equation {
     private String name;
     private String left;
     private String right;
-    private IOperator operator;
+    private String operator;
 }
