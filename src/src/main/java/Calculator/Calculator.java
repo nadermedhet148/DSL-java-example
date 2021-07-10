@@ -1,8 +1,8 @@
 package Calculator;
 
 import Calculator.Equation.Equation;
-import Calculator.Equation.Operator.IOperator;
-import Calculator.Equation.Operator.OperatorFactory;
+import Calculator.Equation.Operators.IOperator;
+import Calculator.Equation.Operators.OperatorFactory;
 import Calculator.Field.Field;
 
 import java.util.HashMap;

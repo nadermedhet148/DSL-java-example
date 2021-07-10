@@ -1,6 +1,5 @@
 package Calculator.Equation;
 
-import Calculator.Equation.Operator.IOperator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

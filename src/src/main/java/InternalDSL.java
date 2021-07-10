@@ -1,6 +1,5 @@
 import Calculator.Calculator;
 import Calculator.Equation.Equation;
-import Calculator.Equation.Operator.Adder;
 import Calculator.Field.FieldBuilder;
 
 

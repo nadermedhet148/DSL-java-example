@@ -27,9 +27,26 @@ public class CalculatorTest {
                 .addField(new Field("bounce" , 10))
                 .addField(new Field("tax" , 2))
                 .addEquation(new Equation("totalSalary" , "salary" , "bounce" , "add" ))
-                .addEquation(new Equation("totalWithTax" , "totalSalary" , "tax" , "add" )).
+                .addEquation(new Equation("totalWithTax" , "totalSalary" , "tax" , "sub" )).
                 calcEquation("totalWithTax");
-        assertEquals(totalSalary , 13);
+        assertEquals(totalSalary , 9);
+    }
+
+    @Test
+    void RunEquationWithEquations() {
+        Calculator calculator = new Calculator();
+        Integer totalSalary = calculator
+                .addField( new Field("salary" , 1))
+                .addField(new Field("bounce" , 10))
+                .addField(new Field("overTime" , 12))
+                .addField(new Field("overTimeHourRate" , 1))
+                .addField(new Field("tax" , 2))
+                .addEquation(new Equation("totalSalary" , "salary" , "bounce" , "add" ))
+                .addEquation(new Equation("OverTimeMoney" , "overTime" , "overTimeHourRate" , "multiply" ))
+                .addEquation(new Equation("totalWithTax" , "totalSalary" , "tax" , "sub" ))
+                .addEquation(new Equation("total" , "totalWithTax" , "OverTimeMoney" , "add" )).
+                calcEquation("total");
+        assertEquals(totalSalary , 21);
     }
 
 }
