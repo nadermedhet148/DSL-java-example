@@ -29,17 +29,25 @@ public class Calculator {
 
     public void run(){
         equationsMap.keySet().forEach(equationName ->{
-            Equation eq = equationsMap.get(equationName);
-            IOperator operator = OperatorFactory.getOperator(eq.getOperator());
-            Integer result =  operator.Operate(fieldsMap.get(eq.getLeft()).getValue() , fieldsMap.get(eq.getRight()).getValue());
-            System.out.println("result for " + eq.getName() + " equal : " + result );
+
+            Integer result =  this.calcEquation(equationName);
+            System.out.println("result for " + equationName + " equal : " + result );
         });
     }
 
-    public  Integer calcEquation(String equationName){
+    public  Integer calcEquation(String equationName)  {
         Equation eq = equationsMap.get(equationName);
         IOperator operator = OperatorFactory.getOperator(eq.getOperator());
-        return operator.Operate(fieldsMap.get(eq.getLeft()).getValue() , fieldsMap.get(eq.getRight()).getValue());
+        return operator.Operate(getValueForEquation(eq.getLeft()), getValueForEquation(eq.getRight()));
+    }
+
+    private Integer getValueForEquation(String name)  {
+        if(fieldsMap.get(name) != null)
+            return fieldsMap.get(name).getValue();
+        if(equationsMap.get(name) != null)
+            return calcEquation(name);
+
+        return 0;
     }
 
 }
