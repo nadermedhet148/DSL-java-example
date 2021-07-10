@@ -7,9 +7,11 @@ public class OperatorFactory {
             case "add":
                 return new Adder();
             case "sub":
-                return new Subtract();
+                return new Subtracter();
             case "multiply":
-                return new Multiply();
+                return new Multiplier();
+            case "divide":
+                return new Divider();
             default:
                 return null;
         }
