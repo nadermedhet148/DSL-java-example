@@ -17,21 +17,10 @@ public class External {
         myReader.close();
 
         DSLParser parser = new DSLParser(dslRules);
-        parser.loadRules();
-        Calculator calculator = new Calculator();
+        CalculatorDataModel model = parser.loadRules();
+        DSLController controller = new DSLController(model);
+        controller.run();
 
-        parser.getFields().forEach(field -> {
-            calculator.addField(field);
-        });
-
-        parser.getEquations().forEach(eq -> {
-            calculator.addEquation(eq);
-        });
-
-        parser.getCalculations().forEach(equationName -> {
-            Float result = calculator.calcEquation(equationName);
-            System.out.println("result for " + equationName + " equal : " + result );
-        });
 
     }
 }
