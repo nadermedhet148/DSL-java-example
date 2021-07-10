@@ -1,0 +1,10 @@
+field:salary
+field:bounce
+field:overTimeHours
+field:overTimeHourRate
+field:tax
+equation:totalWithBounce=salary add bounce
+equation:overTimeTotal=overTimeHours multiply overTimeHourRate
+equation:growthSalary=totalWithBounce add overTimeTotal
+equation:netSalary=growthSalary sub tax
+display:netSalary
