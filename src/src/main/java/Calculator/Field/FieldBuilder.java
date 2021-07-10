@@ -13,7 +13,7 @@ public class FieldBuilder {
         System.out.println("please, Enter " + this.name);
         Scanner myInput = new Scanner( System.in );
 
-        Integer value = myInput.nextInt();
+        Float value = myInput.nextFloat();
         return new Field(this.name , value);
     }
 }

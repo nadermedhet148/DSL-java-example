@@ -30,24 +30,24 @@ public class Calculator {
     public void run(){
         equationsMap.keySet().forEach(equationName ->{
 
-            Integer result =  this.calcEquation(equationName);
+            Float result =  this.calcEquation(equationName);
             System.out.println("result for " + equationName + " equal : " + result );
         });
     }
 
-    public  Integer calcEquation(String equationName)  {
+    public  Float calcEquation(String equationName)  {
         Equation eq = equationsMap.get(equationName);
         IOperator operator = OperatorFactory.getOperator(eq.getOperator());
         return operator.Operate(getValueForEquation(eq.getLeft()), getValueForEquation(eq.getRight()));
     }
 
-    private Integer getValueForEquation(String name)  {
+    private Float getValueForEquation(String name)  {
         if(fieldsMap.get(name) != null)
             return fieldsMap.get(name).getValue();
         if(equationsMap.get(name) != null)
             return calcEquation(name);
 
-        return 0;
+        return 0.0f;
     }
 
 }

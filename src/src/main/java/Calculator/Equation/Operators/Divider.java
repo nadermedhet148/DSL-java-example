@@ -1,7 +1,7 @@
 package Calculator.Equation.Operators;
 
 class Divider implements IOperator {
-    public Integer Operate(Integer left, Integer right) {
+    public Float Operate(Float left, Float right) {
         return left / right;
     }
 }

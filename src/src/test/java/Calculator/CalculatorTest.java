@@ -11,42 +11,42 @@ public class CalculatorTest {
     @Test
     void RunEquationWithFields() {
         Calculator calculator = new Calculator();
-        Integer totalSalary = calculator
-                .addField( new Field("salary" , 1))
-                .addField(new Field("bounce" , 10))
+        Float totalSalary = calculator
+                .addField( new Field("salary" , 1f))
+                .addField(new Field("bounce" , 10f))
                 .addEquation(new Equation("totalSalary" , "salary" , "bounce" , "add" )).
                 calcEquation("totalSalary");
-        assertEquals(totalSalary , 11);
+        assertEquals(totalSalary , 11f);
     }
 
     @Test
     void RunEquationWithEquationANDFields() {
         Calculator calculator = new Calculator();
-        Integer totalSalary = calculator
-                .addField( new Field("salary" , 1))
-                .addField(new Field("bounce" , 10))
-                .addField(new Field("tax" , 2))
+        Float totalSalary = calculator
+                .addField( new Field("salary" , 1f))
+                .addField(new Field("bounce" , 10f))
+                .addField(new Field("tax" , 2f))
                 .addEquation(new Equation("totalSalary" , "salary" , "bounce" , "add" ))
                 .addEquation(new Equation("totalWithTax" , "totalSalary" , "tax" , "sub" )).
                 calcEquation("totalWithTax");
-        assertEquals(totalSalary , 9);
+        assertEquals(totalSalary , 9f);
     }
 
     @Test
     void RunEquationWithEquations() {
         Calculator calculator = new Calculator();
-        Integer totalSalary = calculator
-                .addField( new Field("salary" , 1))
-                .addField(new Field("bounce" , 10))
-                .addField(new Field("overTime" , 12))
-                .addField(new Field("overTimeHourRate" , 1))
-                .addField(new Field("tax" , 2))
+        Float totalSalary = calculator
+                .addField( new Field("salary" , 1f))
+                .addField(new Field("bounce" , 10f))
+                .addField(new Field("overTime" , 12f))
+                .addField(new Field("overTimeHourRate" , 0.7f))
+                .addField(new Field("tax" , 2f))
                 .addEquation(new Equation("totalSalary" , "salary" , "bounce" , "add" ))
                 .addEquation(new Equation("OverTimeMoney" , "overTime" , "overTimeHourRate" , "multiply" ))
                 .addEquation(new Equation("totalWithTax" , "totalSalary" , "tax" , "sub" ))
                 .addEquation(new Equation("total" , "totalWithTax" , "OverTimeMoney" , "add" )).
                 calcEquation("total");
-        assertEquals(totalSalary , 21);
+        assertEquals(totalSalary , 17.4f);
     }
 
 }

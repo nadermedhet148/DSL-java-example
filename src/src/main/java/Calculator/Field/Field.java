@@ -9,9 +9,9 @@ public class Field {
 
     private String name;
 
-    private Integer value;
+    private Float value;
 
-    public  void  setValue(Integer v){
+    public  void  setValue(Float v){
         this.value = v;
     }
 
