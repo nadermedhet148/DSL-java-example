@@ -4,18 +4,23 @@ import DSlParser.DSLParser;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ExternalDSL {
     public static void main(String[] args) throws Exception {
-        File myObj = new File("/home/nader/Documents/projects/DSL/src/ExternalDSLEx.txt");
-        Scanner myReader = new Scanner(myObj);
-        ArrayList<String> dslRules = new  ArrayList<>();
-        while (myReader.hasNextLine()) {
-            String data = myReader.nextLine();
-            dslRules.add(data);
-        }
-        myReader.close();
+        ArrayList<String> dslRules = new ArrayList<String>(Arrays.asList(new String[]{
+                "field:salary",
+                "field:bounce",
+                "field:overTimeHours",
+                "field:overTimeHourRate",
+                "field:tax",
+                "equation:totalWithBounce=salary add bounce",
+                "equation:overTimeTotal=overTimeHours multiply overTimeHourRate",
+                "equation:growthSalary=totalWithBounce add overTimeTotal",
+                "equation:netSalary=growthSalary sub tax",
+                "display:netSalary"
+        }));
 
         DSLParser parser = new DSLParser(dslRules);
         CalculatorDataModel model = parser.loadRules();
