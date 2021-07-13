@@ -1,4 +1,7 @@
+package DSlParser;
+
 import Calculator.Equation.Equation;
+import Calculator.Field.Field;
 import Calculator.Field.FieldBuilder;
 import lombok.Getter;
 
@@ -31,11 +34,7 @@ public class DSLParser {
         return model;
     }
     public void parseField(String field){
-        try {
-            this.model.getFields().add(new FieldBuilder(field.replace(" " , "")).build());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        this.model.getFields().add(new Field(field.replace(" " , "") , null));
     }
 
     public void parseEquation(String equation){

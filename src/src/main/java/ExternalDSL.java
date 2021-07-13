@@ -1,11 +1,12 @@
-import Calculator.Calculator;
+import DSlParser.CalculatorDataModel;
+import DSlParser.DSLController;
+import DSlParser.DSLParser;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-public class External {
+public class ExternalDSL {
     public static void main(String[] args) throws Exception {
         File myObj = new File("/home/nader/Documents/projects/DSL/src/ExternalDSLEx.txt");
         Scanner myReader = new Scanner(myObj);
