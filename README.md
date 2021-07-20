@@ -1,10 +1,11 @@
-#DSL for calculation with java
+
+# DSL for calculation with java
 --------------------------------------
 this repo is a side project example for DSL (domain specific language ) in java ,
 for simple calculator generator app
 
 
-##Eyntax
+## Syntax
 -----------------------
 ```
 field :  required for add input from the users will be float
